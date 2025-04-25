@@ -136,3 +136,63 @@ function printNames(people: Person[]) {
         console.log(person.firstName);
 }
 
+// Abstract Classes and Methods
+
+abstract class Shape {
+    constructor(public color: string) {}
+
+    abstract render(): void;
+}
+
+class Circle extends Shape {
+    constructor(public radius: string, color: string) {
+        super(color);
+    }
+
+    override render(): void {
+        console.log('Rendering a circle')
+    }
+}
+
+// Exercises
+
+class Logger {
+    constructor(public fileName: string) {}
+}
+
+class Persons {
+    constructor(public firstName: string, public lastName: string) {}
+
+    get fullName() {
+        return this.firstName+' '+this.lastName;
+    }
+}
+
+class Employee extends Persons {
+    constructor(public salary: string, firsName: string, lastName: string) {
+        super(firsName, lastName)
+    }
+}
+
+// The difference between private and protected is that protected can be inherited
+
+interface Iaddress {
+    street: string,
+    city: string,
+    zipCode: number
+}
+interface Iemployee {
+    name: string,
+    salary: number,
+    address: Iaddress
+}
+
+let employee = {
+    name: 'John Smith',
+    salary: 50_000,
+    address: {
+    street: 'Flinders st',
+    city: 'Melbourne',
+    zipCode: 3144,
+    },
+};

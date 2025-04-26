@@ -196,3 +196,56 @@ let employee = {
     zipCode: 3144,
     },
 };
+
+// Generic classes
+
+class KeyValuePair<K, V> {
+    constructor(public key: K, public value: V) {}
+}
+
+let pair = new KeyValuePair(1, 'a');
+const upper = pair.value.toUpperCase();
+
+// Generic functions
+function wrapInArray<T>(value: T) {
+    return [value]
+}
+
+let warrNum = wrapInArray(1);
+let warrStr = wrapInArray('a'); // Now depending on the type it will return an array of that type.
+
+// Generic interfaces
+
+//http://mywebsite.com/users
+//http://mywebsite.com/products
+
+interface Result<T> {
+    data: T | null,
+    error: string | null
+}
+
+function fetch<T>(url: string): Result<T> {
+    return { data: null, error: null };
+}
+
+interface User {
+    username: string;
+}
+
+interface Product {
+    title: string;
+}
+
+const info = fetch<User>('URL'); // Now depending on the interface that we pass we can have specific properties
+info.data
+
+// Generic constains
+interface IPerson {
+    name: string
+}
+
+function echo<T extends IPerson>(value: T): T {
+    return value;
+}
+
+echo({ name: 'a' }) // The generic must fulfill the Interface of the type is extends it would be a class or instance too.

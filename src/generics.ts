@@ -46,8 +46,8 @@ class SearchableStore<T extends { name: string }> extends Store<T> { // we can u
 
 // We can fix the generic type parameter by passing 
 // to the father class a interface everything will be relate to that interface
-class ProductStore extends Store<Product> {
-    filterByCategory(category: string): Product[] {
+class ProductStore extends Store<IProduct> {
+    filterByCategory(category: string): IProduct[] {
         return [];
     }
 }
@@ -86,3 +86,17 @@ type Optionals<T> = {
     readonly [k in keyof T]?: T[k]
 }
 
+// Exercises
+
+function echo<T>(arg: T) { return arg; }
+
+function printName<T extends { name: string }>(obj: T) {
+
+    console.log(obj.name);
+}
+
+interface IEntity<T> {
+    id: T
+}
+
+// Return keyof User T => 'userId' | 'susername'
